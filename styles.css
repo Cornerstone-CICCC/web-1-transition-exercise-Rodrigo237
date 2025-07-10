@@ -1,0 +1,92 @@
+
+.circle{
+    width: 150px;
+    height: 150px;
+}
+
+.circle-1{
+    background-color: yellow;
+    clip-path: circle(50% at 50% 50%);
+    opacity: 1;
+    transition: opacity .3s ease-in;
+    transition-delay: 0, 2s;
+    animation: roll 5s linear infinite;  
+    position: fixed;
+    z-index: 10;  
+}
+
+.circle-1:hover{
+    opacity: 0;
+}
+
+.border{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 20px;
+    border: 2px solid black;
+    background-color: #eee;
+    overflow: hidden;
+    text-align: center;
+    
+}
+
+.loading_bar {
+  height: 100%;
+  width: 0;
+  animation: loading 5s linear infinite;
+}
+
+.loading_bar span::before{
+    position: relative;
+    z-index: 2;
+    animation: counter 5s steps(100,end) linear infinite;
+}
+
+
+@keyframes loading {
+  0% {
+    width: 0%;
+    background-color: red;
+  }
+  50%{
+    width: 50%;
+    background-color: orange;
+  }
+  100% {
+    width: 100%;
+    background-color: green;
+  }
+}
+
+@keyframes counter {
+  0% { content: "0%"; }
+  100% { content: "100%"; }
+}
+
+
+
+@keyframes roll {
+  0%, 100% {
+    transform: rotate(0deg);
+    left: 0;
+    top: 0;
+  }
+  25% {
+    transform: rotate(5turn);
+    left: calc(100vw - 150px);
+    top: 0;
+  }
+  50% {
+    transform: rotate(10turn);
+    top: calc(100vh - 150px);
+    left: calc(100vw - 150px);
+  }
+  75% {
+    transform: rotate(15turn);
+    top: calc(100vh - 150px);
+    left: 0;
+  }
+}
